@@ -22,23 +22,12 @@ def webhook():
         params = {
             "symbol": ticker,
             "side": side,
-            "positionSide": "SHORT",
-            "type": "MARKET",
-            "quantity": quantity,
-        }
-
-        params2 = {
-            "symbol": ticker,
-            "side": side,
+            "price": price,
             "positionSide": "LONG",
             "type": "MARKET",
             "quantity": quantity,
         }
-
-        if side == "BUY":
-            Client(binanceApiKey, binanceSecretKey).new_order(**params2)
-        if side == "SELL":
-            Client(binanceApiKey, binanceSecretKey).new_order(**params)
+        Client(binanceApiKey, binanceSecretKey).new_order(**params)
 
 
 
